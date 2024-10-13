@@ -1,0 +1,21 @@
+<div class="filter">
+    <span class="lead me-2">Filter: </span>
+
+    <div class="form-check form-check-inline lead me-3">
+        <input class="form-check-input" type="radio" name="stock" id="all"
+        value="all" [(ngModel)]="inStock" (change)="changeFIlterType()">
+        <label class="form-check-label" for="all">All</label>
+    </div>
+
+    <div class="form-check form-check-inline lead me-3">
+        <input class="form-check-input" type="radio" name="stock" id="in-stock"
+        value="in-stock" [(ngModel)]="inStock" (change)="changeFIlterType()">
+        <label class="form-check-label" for="in-stock">In-stock</label>
+    </div>
+
+    <div class="form-check form-check-inline lead me-3">
+        <input class="form-check-input" type="radio" name="stock" id="out-of-stock"
+        value="out-of-stock" [(ngModel)]="inStock" (change)="changeFIlterType()">
+        <label class="form-check-label" for="out-of-stock">Out of stock</label>
+    </div>
+</div>

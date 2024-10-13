@@ -1,0 +1,52 @@
+<div class="border product-container p-2 rounded">
+
+    @if(product.discountPrice !== undefined){
+
+        <div 
+            class="on-sale-tag text-dark fs-6">
+            <b class="fw-bold">
+                {{ (100 - (product.discountPrice / product.price) * 100).toFixed() }}  % OFF
+            </b>
+        </div>
+    }
+    
+    
+    
+    <div class="product-image-price rounded">
+        <img [src]="product.imageURL" bind-alt="'Product is ' + product.name">
+
+        <div class="price px-2">
+            {{ product.discountPrice ? product.discountPrice : 
+                product.price }} $
+        </div>
+    </div>
+
+
+    <div class="product-name mt-2">
+        <p class="lead fw-medium">
+            {{ product.name }}
+        </p>
+    </div>
+
+    <div class="product-category mt-1">
+        <small>
+            {{ product.gender }} . {{ product.category }} . {{ product.brand }}
+        </small>
+    </div>
+
+    <div class="product-available-colors mb-1">
+        <small>
+            {{ product.color.length }} Colors . Best Seller
+        </small> 
+    </div>
+
+    <div class="product-stock">
+        <p class="fw-bold"        
+            [ngStyle]="{color: product.is_in_inventory ? 'green' : 'red'}"
+        >
+            {{ product.is_in_inventory ? "Availabe in stock" : "Out of stock"  }}
+        </p>
+    </div>
+
+    <!-- [style.color]="product.is_in_inventory ? 'green' : 'red'" -->
+</div>
