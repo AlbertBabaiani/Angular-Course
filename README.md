@@ -3,3 +3,4 @@ TypeScript ფაილის JavaScript-ში გადასაყვან�
 ```
 tsc main.ts
 ```
+> "main.ts"-ის მაგივრად შეგიძლიათ მიუთითოთ სხვა TypeScript-ის ფაილი
