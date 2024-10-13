@@ -544,23 +544,26 @@ export class AppComponent {
 
   products = [...this.main_products]
 
-  // ისე გადააკეტეთ, რომ ორივე ფილტერი ერთდროულად მუშაობდეს
+  searchedValue: string = ""
+  filteredType: FilterType = "all"
 
   getSearchValue(searchValue: string): void {
-    this.products = this.main_products.filter(
-      (product: IProduct) => product.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase().trim())
-    )
+    this.searchedValue = searchValue;
+    this.applyFilters();
   }
 
   getFilterType(filterType: FilterType): void {
-    if(filterType === 'all'){
-      this.products = [...this.main_products]
-    }
-    else if(filterType === 'in-stock'){
-      this.products = this.main_products.filter( (product: IProduct) => product.is_in_inventory)
-    }
-    else{
-      this.products = this.main_products.filter( (product: IProduct) => !product.is_in_inventory)
-    }
+    this.filteredType = filterType;
+    this.applyFilters();
+  }
+
+  private applyFilters(): void {
+    this.products = this.main_products.filter((product: IProduct) => {
+      const matchesSearch = product.name.toLowerCase().includes(this.searchedValue.toLowerCase().trim());
+      const matchesFilter = this.filteredType === "all" || 
+                            (this.filteredType === "in-stock" && product.is_in_inventory) || 
+                            (this.filteredType === "out-of-stock" && !product.is_in_inventory);
+      return matchesSearch && matchesFilter;
+    });
   }
 }
