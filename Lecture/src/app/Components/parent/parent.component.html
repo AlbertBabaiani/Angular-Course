@@ -1,0 +1,7 @@
+<!-- <app-child-1 (val)="getValue($event)"/> -->
+<!-- <app-child-2 [new_value]="received_value"/> -->
+
+<app-child-1 #child1/>
+<app-child-2 [new_value]="child1.searched_value"/>
+
+

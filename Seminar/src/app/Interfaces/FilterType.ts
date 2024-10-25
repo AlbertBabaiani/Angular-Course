@@ -1,0 +1,1 @@
+export type FilterType = "all" | "in-stock" | "out-of-stock"

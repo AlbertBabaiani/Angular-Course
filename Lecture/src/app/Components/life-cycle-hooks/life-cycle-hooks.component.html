@@ -1,0 +1,17 @@
+
+@if(value.length < 5){
+
+    <app-hook-child [value]="input.value" [value1]="arr">
+        
+        <p #p>Lorem lorem lorem {{ input.value }}</p>
+        
+    </app-hook-child>
+}
+
+<div #div>
+    Hello Random Text
+</div>
+
+<input type="text" #input="ngModel" ngModel>
+<input type="text" #input1="ngModel" ngModel (input)="arr.push(input1.value)">
+<input type="text" [(ngModel)]="value">
